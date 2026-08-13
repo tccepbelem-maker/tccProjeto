@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>NutriEscola | Login</title>
+
+  <meta name="description" content="Acesse sua conta no NutriEscola">
+  <meta name="keywords" content="nutrição, escola, alimentação saudável">
+
+  <!-- Fonte -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- CSS original do projeto -->
+  <link href="1.css" rel="stylesheet">
+
+  <!-- Estilos exclusivos da página D1 -->
+  <style>
+
+    :root {
+      --verde-escuro: #071b16;
+      --verde: #2E7D32;
+      --verde-claro: #8BC34A;
+      --verde-brilho: #66BB6A;
+      --branco: #ffffff;
+      --cinza: #aabdb4;
+      --borda: rgba(139, 195, 74, 0.16);
+      --card: rgba(10, 38, 29, 0.88);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Rubik", sans-serif;
+    }
+
+    html,
+    body {
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      color: var(--branco);
+
+      background:
+        radial-gradient(
+          circle at 15% 20%,
+          rgba(139, 195, 74, 0.12),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 85% 80%,
+          rgba(46, 125, 50, 0.18),
+          transparent 30%
+        ),
+        var(--verde-escuro);
+
+      overflow-x: hidden;
+    }
+
+    /* =========================
+       ESTRUTURA PRINCIPAL
+    ========================= */
+
+    .login-shell {
+      min-height: calc(100vh - 58px);
+
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* =========================
+       LADO ESQUERDO
+    ========================= */
+
+    .login-brand {
+      min-height: 650px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 70px 8vw;
+
+      position: relative;
+      overflow: hidden;
+    }
+
+    .login-brand::before {
+      content: "";
+
+      position: absolute;
+
+      width: 520px;
+      height: 520px;
+
+      border: 1px solid rgba(139, 195, 74, 0.15);
+
+      border-radius: 50%;
+
+      box-shadow:
+        0 0 80px rgba(139, 195, 74, 0.05),
+        inset 0 0 70px rgba(139, 195, 74, 0.03);
+    }
+
+    .login-brand::after {
+      content: "";
+
+      position: absolute;
+
+      width: 340px;
+      height: 340px;
+
+      border: 1px solid rgba(46, 125, 50, 0.22);
+
+      border-radius: 50%;
+    }
+
+    .brand-content {
+      position: relative;
+      z-index: 2;
+
+      max-width: 560px;
+    }
+
+    /* =========================
+       LOGO
+    ========================= */
+
+    .brand-mark {
+      width: 78px;
+      height: 78px;
+
+      display: grid;
+      place-items: center;
+
+      margin-bottom: 30px;
+
+      border: 2px solid var(--verde-claro);
+
+      border-radius: 50%;
+
+      color: var(--verde-claro);
+
+      font-size: 2.3rem;
+
+      background: rgba(139, 195, 74, 0.04);
+
+      box-shadow:
+        0 0 28px rgba(139, 195, 74, 0.18);
+
+      text-shadow:
+        0 0 15px rgba(139, 195, 74, 0.5);
+    }
+
+    .eyebrow {
+      color: var(--verde-claro);
+
+      font-size: 0.76rem;
+
+      font-weight: 700;
+
+      letter-spacing: 0.2em;
+
+      margin-bottom: 16px;
+    }
+
+    .brand-content h1 {
+      font-size: clamp(2.7rem, 5vw, 5rem);
+
+      line-height: 0.98;
+
+      font-weight: 700;
+
+      letter-spacing: -0.05em;
+
+      margin-bottom: 24px;
+    }
+
+    .brand-content h1 span {
+      color: var(--verde-claro);
+
+      text-shadow:
+        0 0 15px rgba(139, 195, 74, 0.25);
+    }
+
+    .brand-text {
+      max-width: 500px;
+
+      color: var(--cinza);
+
+      font-size: 1.05rem;
+
+      line-height: 1.8;
+    }
+
+    /* =========================
+       ITENS DE NUTRIÇÃO
+    ========================= */
+
+    .challenge-points {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 26px;
+
+      margin-top: 42px;
+
+      color: #e8e7ef;
+
+      font-size: 0.88rem;
+
+      font-weight: 500;
+    }
+
+    .challenge-points div {
+      display: flex;
+
+      align-items: center;
+
+      gap: 9px;
+    }
+
+    .challenge-points span {
+      color: var(--verde-claro);
+
+      font-size: 0.72rem;
+
+      font-weight: 700;
+    }
+
+    /* =========================
+       ELEMENTOS DECORATIVOS
+    ========================= */
+
+    .brand-orbit {
+      position: absolute;
+
+      border: 1px solid rgba(255, 255, 255, 0.06);
+
+      border-radius: 50%;
+
+      animation: spin 18s linear infinite;
+    }
+
+    .orbit-one {
+      width: 680px;
+      height: 680px;
+    }
+
+    .orbit-two {
+      width: 420px;
+      height: 420px;
+
+      animation-duration: 12s;
+
+      animation-direction: reverse;
+    }
+
+    .orbit-three {
+      width: 760px;
+      height: 760px;
+
+      border-color: rgba(139, 195, 74, 0.07);
+
+      animation-duration: 30s;
+    }
+
+    .nutrition-decoration {
+      position: absolute;
+
+      z-index: 1;
+
+      right: 10%;
+      bottom: 10%;
+
+      display: flex;
+
+      gap: 10px;
+
+      font-size: 1.6rem;
+
+      opacity: 0.9;
+
+      filter:
+        drop-shadow(
+          0 0 12px rgba(139, 195, 74, 0.2)
+        );
+    }
+
+    .nutrition-decoration span {
+      animation: floatFood 4s ease-in-out infinite;
+    }
+
+    .nutrition-decoration span:nth-child(2) {
+      animation-delay: 0.6s;
+    }
+
+    .nutrition-decoration span:nth-child(3) {
+      animation-delay: 1.2s;
+    }
+
+    /* =========================
+       LADO DO LOGIN
+    ========================= */
+
+    .login-panel {
+      display: grid;
+
+      place-items: center;
+
+      padding: 55px 7vw 55px 4vw;
+
+      position: relative;
+    }
+
+    .login-card {
+      width: min(100%, 470px);
+
+      padding: 44px;
+
+      background: var(--card);
+
+      border: 1px solid var(--borda);
+
+      border-radius: 24px;
+
+      box-shadow:
+        0 30px 90px rgba(0, 0, 0, 0.4),
+        0 0 50px rgba(46, 125, 50, 0.08);
+
+      backdrop-filter: blur(18px);
+    }
+
+    /* =========================
+       BOTÃO VOLTAR
+    ========================= */
+
+    .btn-voltar {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      margin-bottom: 28px;
+
+      padding: 10px 16px;
+
+      border: 1px solid var(--verde-claro);
+
+      border-radius: 9px;
+
+      color: var(--verde-claro);
+
+      background: transparent;
+
+      text-decoration: none;
+
+      font-size: 0.8rem;
+
+      font-weight: 600;
+
+      transition: 0.25s ease;
+    }
+
+    .btn-voltar:hover {
+      color: var(--verde-escuro);
+
+      background: var(--verde-claro);
+
+      box-shadow:
+        0 0 20px rgba(139, 195, 74, 0.3);
+
+      transform: translateX(-3px);
+    }
+
+    /* =========================
+       CABEÇALHO LOGIN
+    ========================= */
+
+    .login-heading h2 {
+      font-size: 2rem;
+
+      line-height: 1.15;
+
+      margin-bottom: 10px;
+    }
+
+    .login-heading > p:last-child {
+      color: var(--cinza);
+
+      font-size: 0.92rem;
+
+      line-height: 1.6;
+    }
+
+    /* =========================
+       FORMULÁRIO
+    ========================= */
+
+    .login-form {
+      margin-top: 30px;
+    }
+
+    .field {
+      margin-bottom: 21px;
+    }
+
+    .field label,
+    .field-label-row label {
+      display: block;
+
+      color: #efedf6;
+
+      font-size: 0.83rem;
+
+      font-weight: 500;
+
+      margin-bottom: 9px;
+    }
+
+    .field-label-row {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+    }
+
+    .field-label-row label {
+      margin-bottom: 9px;
+    }
+
+    .forgot-link {
+      color: var(--verde-claro);
+
+      text-decoration: none;
+
+      font-size: 0.76rem;
+
+      margin-bottom: 9px;
+
+      transition: 0.2s ease;
+    }
+
+    .forgot-link:hover {
+      color: white;
+    }
+
+    /* =========================
+       INPUTS
+    ========================= */
+
+    .input-wrap {
+      height: 54px;
+
+      display: flex;
+
+      align-items: center;
+
+      border: 1px solid rgba(255, 255, 255, 0.13);
+
+      border-radius: 11px;
+
+      background: rgba(0, 0, 0, 0.18);
+
+      transition: 0.2s ease;
+    }
+
+    .input-wrap:focus-within {
+      border-color: var(--verde-claro);
+
+      box-shadow:
+        0 0 0 3px rgba(139, 195, 74, 0.09);
+    }
+
+    .input-icon {
+      width: 46px;
+
+      text-align: center;
+
+      color: var(--verde-claro);
+
+      font-weight: 700;
+    }
+
+    .input-wrap input {
+      flex: 1;
+
+      height: 100%;
+
+      min-width: 0;
+
+      border: 0;
+
+      outline: 0;
+
+      background: transparent;
+
+      color: white;
+
+      font-size: 0.88rem;
+    }
+
+    .input-wrap input::placeholder {
+      color: #6f7f76;
+    }
+
+    .password-toggle {
+      margin-right: 13px;
+
+      border: 0;
+
+      background: transparent;
+
+      color: var(--verde-claro);
+
+      cursor: pointer;
+
+      font-size: 0.72rem;
+
+      font-weight: 600;
+    }
+
+    /* =========================
+       CHECKBOX
+    ========================= */
+
+    .remember {
+      display: flex;
+
+      align-items: center;
+
+      gap: 9px;
+
+      color: var(--cinza);
+
+      font-size: 0.78rem;
+
+      cursor: pointer;
+    }
+
+    .remember input {
+      accent-color: var(--verde-claro);
+
+      width: 15px;
+
+      height: 15px;
+    }
+
+    /* =========================
+       BOTÃO ENTRAR
+    ========================= */
+
+    .login-button {
+      width: 100%;
+
+      height: 55px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 16px;
+
+      margin-top: 25px;
+
+      border: 1px solid var(--verde);
+
+      border-radius: 11px;
+
+      background: var(--verde);
+
+      color: white;
+
+      cursor: pointer;
+
+      font-size: 0.92rem;
+
+      font-weight: 700;
+
+      transition: 0.25s ease;
+    }
+
+    .login-button span {
+      font-size: 1.25rem;
+
+      transition: 0.25s ease;
+    }
+
+    .login-button:hover {
+      background: transparent;
+
+      color: var(--verde-claro);
+
+      border-color: var(--verde-claro);
+
+      box-shadow:
+        0 0 30px rgba(46, 125, 50, 0.3);
+    }
+
+    .login-button:hover span {
+      transform: translateX(5px);
+    }
+
+    /* =========================
+       DIVISOR
+    ========================= */
+
+    .divider {
+      display: flex;
+
+      align-items: center;
+
+      gap: 14px;
+
+      color: #67657a;
+
+      font-size: 0.72rem;
+
+      margin: 25px 0 18px;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+
+      flex: 1;
+
+      height: 1px;
+
+      background: var(--borda);
+    }
+
+    /* =========================
+       GOOGLE
+    ========================= */
+
+    .social-login {
+      width: 100%;
+
+      height: 52px;
+
+      border: 1px solid var(--borda);
+
+      border-radius: 11px;
+
+      background: rgba(255, 255, 255, 0.025);
+
+      color: #e8e7ef;
+
+      cursor: pointer;
+
+      font-size: 0.83rem;
+
+      font-weight: 500;
+
+      transition: 0.2s ease;
+    }
+
+    .social-login:hover {
+      border-color: rgba(139, 195, 74, 0.45);
+
+      background: rgba(139, 195, 74, 0.04);
+    }
+
+    .google-icon {
+      margin-right: 9px;
+
+      color: var(--verde-claro);
+
+      font-weight: 800;
+    }
+
+    /* =========================
+       CRIAR CONTA
+    ========================= */
+
+    .signup {
+      margin-top: 25px;
+
+      text-align: center;
+
+      color: var(--cinza);
+
+      font-size: 0.78rem;
+    }
+
+    .signup a {
+      color: var(--verde-claro);
+
+      font-weight: 600;
+
+      text-decoration: none;
+    }
+
+    .signup a:hover {
+      color: white;
+    }
+
+    /* =========================
+       LOGO MOBILE
+    ========================= */
+
+    .mobile-logo {
+      display: none;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    .login-footer {
+      height: 58px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      padding: 0 6vw;
+
+      color: #5f7269;
+
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+      font-size: 0.7rem;
+    }
+
+    /* =========================
+       ANIMAÇÕES
+    ========================= */
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes floatFood {
+      0%,
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-10px) rotate(4deg);
+      }
+    }
+
+    /* =========================
+       TABLET
+    ========================= */
+
+    @media (max-width: 1000px) {
+
+      .login-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .login-brand {
+        min-height: auto;
+
+        padding: 55px 8vw 25px;
+
+        text-align: center;
+      }
+
+      .brand-content {
+        max-width: 650px;
+      }
+
+      .brand-mark {
+        margin: 0 auto 22px;
+      }
+
+      .brand-text {
+        margin: 0 auto;
+      }
+
+      .challenge-points {
+        justify-content: center;
+
+        margin-top: 28px;
+      }
+
+      .login-panel {
+        padding: 25px 6vw 60px;
+      }
+    }
+
+    /* =========================
+       CELULAR
+    ========================= */
+
+    @media (max-width: 560px) {
+
+      .login-brand {
+        padding: 40px 25px 15px;
+      }
+
+      .brand-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .brand-text {
+        font-size: 0.9rem;
+      }
+
+      .challenge-points {
+        gap: 13px 20px;
+
+        font-size: 0.76rem;
+      }
+
+      .login-card {
+        padding: 30px 23px;
+
+        border-radius: 18px;
+      }
+
+      .mobile-logo {
+        display: flex;
+
+        align-items: center;
+
+        gap: 10px;
+
+        margin-bottom: 30px;
+
+        font-size: 0.95rem;
+      }
+
+      .mobile-logo .small {
+        width: 38px;
+        height: 38px;
+
+        margin: 0;
+
+        font-size: 1.2rem;
+      }
+
+      .login-heading h2 {
+        font-size: 1.65rem;
+      }
+
+      .login-footer {
+        height: auto;
+
+        min-height: 58px;
+
+        padding: 15px 20px;
+
+        gap: 8px;
+
+        flex-direction: column;
+
+        justify-content: center;
+      }
+
+      .login-brand::before {
+        width: 350px;
+        height: 350px;
+      }
+
+      .login-brand::after {
+        width: 250px;
+        height: 250px;
+      }
+
+      .nutrition-decoration {
+        right: 50%;
+
+        transform: translateX(50%);
+
+        bottom: 5%;
+
+        font-size: 1.3rem;
+      }
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <main class="login-shell">
+
+    <!-- =================================
+         LADO ESQUERDO
+    ================================== -->
+
+    <section class="login-brand" aria-label="NutriEscola">
+
+      <!-- Elementos circulares -->
+      <div class="brand-orbit orbit-one"></div>
+      <div class="brand-orbit orbit-two"></div>
+      <div class="brand-orbit orbit-three"></div>
+
+      <!-- Elementos de alimentação -->
+      <div class="nutrition-decoration" aria-hidden="true">
+        <span>🥦</span>
+        <span>🍎</span>
+        <span>🥕</span>
+      </div>
+
+      <div class="brand-content">
+
+        <!-- Logo -->
+        <div class="brand-mark" aria-hidden="true">
+          🍎
+        </div>
+
+        <p class="eyebrow">
+          NUTRIÇÃO ESCOLAR
+        </p>
+
+        <h1>
+          Nutri <span>Escola</span>
+        </h1>
+
+        <p class="brand-text">
+          Uma alimentação equilibrada começa na escola.
+          Acompanhe seus hábitos, refeições e objetivos
+          de uma forma simples, saudável e educativa.
+        </p>
+
+        <div class="challenge-points">
+
+          <div>
+            <span>01</span>
+            Alimentação saudável
+          </div>
+
+          <div>
+            <span>02</span>
+            Hábitos equilibrados
+          </div>
+
+          <div>
+            <span>03</span>
+            Bem-estar na escola
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================
+         ÁREA DO LOGIN
+    ================================== -->
+
+    <section class="login-panel">
+
+      <div class="login-card">
+
+        <!-- BOTÃO VOLTAR -->
+        <a href="index.html" class="btn-voltar">
+          ← Voltar para o início
+        </a>
+
+
+        <!-- LOGO MOBILE -->
+
+        <div class="mobile-logo">
+
+          <div class="brand-mark small" aria-hidden="true">
+            🍎
+          </div>
+
+          <strong>
+            Nutri <span>Escola</span>
+          </strong>
+
+        </div>
+
+
+        <!-- CABEÇALHO -->
+
+        <div class="login-heading">
+
+          <p class="eyebrow">
+            BEM-VINDO AO NUTRIESCOLA
+          </p>
+
+          <h2>
+            Entre na sua conta
+          </h2>
+
+          <p>
+            Acompanhe sua jornada de alimentação
+            e bem-estar escolar.
+          </p>
+
+        </div>
+
+
+        <!-- FORMULÁRIO -->
+
+        <form class="login-form" action="#" method="post">
+
+          <!-- E-MAIL -->
+
+          <div class="field">
+
+            <label for="email">
+              E-mail
+            </label>
+
+            <div class="input-wrap">
+
+              <span class="input-icon" aria-hidden="true">
+                @
+              </span>
+
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="seuemail@exemplo.com"
+                autocomplete="email"
+                required
+              >
+
+            </div>
+
+          </div>
+
+
+          <!-- SENHA -->
+
+          <div class="field">
+
+            <div class="field-label-row">
+
+              <label for="password">
+                Senha
+              </label>
+
+              <a href="#" class="forgot-link">
+                Esqueci minha senha
+              </a>
+
+            </div>
+
+            <div class="input-wrap">
+
+              <span class="input-icon" aria-hidden="true">
+                •
+              </span>
+
+              <input
+                id="password"
+                name="password"
+                type="password"
+                placeholder="Digite sua senha"
+                autocomplete="current-password"
+                required
+              >
+
+              <button
+                class="password-toggle"
+                type="button"
+                aria-label="Mostrar senha"
+                onclick="togglePassword()"
+              >
+                Mostrar
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- LEMBRAR LOGIN -->
+
+          <label class="remember">
+
+            <input
+              type="checkbox"
+              name="remember"
+            >
+
+            <span>
+              Manter-me conectado
+            </span>
+
+          </label>
+
+
+          <!-- BOTÃO ENTRAR -->
+
+          <button
+            class="login-button"
+            type="submit"
+          >
+
+            Entrar
+
+            <span aria-hidden="true">
+              →
+            </span>
+
+          </button>
+
+        </form>
+
+
+        <!-- DIVISOR -->
+
+        <div class="divider">
+          <span>ou</span>
+        </div>
+
+
+        <!-- GOOGLE -->
+
+        <button
+          class="social-login"
+          type="button"
+        >
+
+          <span class="google-icon">
+            G
+          </span>
+
+          Continuar com Google
+
+        </button>
+
+
+        <!-- CRIAR CONTA -->
+
+        <p class="signup">
+
+          Ainda não possui uma conta?
+
+          <a href="#">
+            Criar conta
+          </a>
+
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =================================
+       FOOTER
+  ================================== -->
+
+  <footer class="login-footer">
+
+    <span>
+      © 2026 NutriEscola
+    </span>
+
+    <span>
+      Alimente. Aprenda. Cuide-se.
+    </span>
+
+  </footer>
+
+
+  <!-- =================================
+       JAVASCRIPT
+  ================================== -->
+
+  <script>
+
+    function togglePassword() {
+
+      const input =
+        document.getElementById("password");
+
+      const button =
+        document.querySelector(".password-toggle");
+
+      const visible =
+        input.type === "text";
+
+
+      input.type =
+        visible
+          ? "password"
+          : "text";
+
+
+      button.textContent =
+        visible
+          ? "Mostrar"
+          : "Ocultar";
+
+
+      button.setAttribute(
+        "aria-label",
+        visible
+          ? "Mostrar senha"
+          : "Ocultar senha"
+      );
+
+    }
+
+  </script>
+
+</body>
+
+</html>

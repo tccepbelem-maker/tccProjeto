@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>NutriEscola</title>
+  <meta name="description" content="NutriEscola - educação alimentar e nutrição no ambiente escolar">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --verde-escuro: #174d35;
+      --verde: #66b77d;
+      --verde-claro: #8dcea0;
+      --verde-suave: #bfe5c9;
+      --fundo: #f7faf8;
+      --branco: #ffffff;
+      --texto: #244033;
+      --cinza: #d9dedb;
+      --cinza-texto: #66746d;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Rubik", sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--fundo);
+      color: var(--texto);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+      width: 100%;
+      height: 76px;
+      background: var(--verde-escuro);
+      color: white;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 12px rgba(0,0,0,.12);
+    }
+
+    .header-container {
+      width: min(1180px, 92%);
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.35rem;
+      font-weight: 800;
+    }
+
+    .logo span {
+      color: var(--verde-claro);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 27px;
+      font-size: .84rem;
+      font-weight: 500;
+    }
+
+    .nav a {
+      opacity: .9;
+      transition: .2s;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      color: var(--verde-claro);
+    }
+
+    .nav .login {
+      padding: 9px 17px;
+      border: 1px solid var(--verde-claro);
+      border-radius: 7px;
+      color: white;
+    }
+
+    .nav .login:hover {
+      background: var(--verde-claro);
+      color: var(--verde-escuro);
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 355px;
+      background: var(--verde-claro);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.25);
+    }
+
+    .hero::before {
+      width: 420px;
+      height: 420px;
+      left: -170px;
+      top: -210px;
+    }
+
+    .hero::after {
+      width: 330px;
+      height: 330px;
+      right: -130px;
+      bottom: -190px;
+    }
+
+    .hero-container {
+      width: min(1180px, 92%);
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.1rem, 5vw, 3.7rem);
+      color: white;
+      line-height: 1;
+      margin-bottom: 17px;
+    }
+
+    .hero h1 span {
+      color: var(--verde-escuro);
+    }
+
+    .hero p {
+      max-width: 620px;
+      color: #effaf2;
+      line-height: 1.65;
+      font-size: .98rem;
+    }
+
+    .hero-buttons {
+      margin-top: 24px;
+      display: flex;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 130px;
+      padding: 11px 18px;
+      border-radius: 7px;
+      font-size: .8rem;
+      font-weight: 600;
+      transition: .2s;
+    }
+
+    .button.primary {
+      background: var(--verde-escuro);
+      color: white;
+    }
+
+    .button.secondary {
+      border: 1px solid rgba(255,255,255,.75);
+      color: white;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .placeholder {
+      background: white;
+      border: 1px solid #e1e5e2;
+      border-radius: 5px;
+      min-height: 170px;
+      display: grid;
+      place-items: center;
+      color: #555;
+      font-size: .72rem;
+      box-shadow: 0 5px 18px rgba(0,0,0,.04);
+    }
+
+    .hero-image {
+      height: 235px;
+      border-radius: 50%;
+      width: 235px;
+      margin: auto;
+    }
+
+    /* =========================
+       SEÇÕES
+    ========================= */
+
+    section {
+      padding: 60px 0;
+      scroll-margin-top: 76px;
+    }
+
+    .section-container {
+      width: min(1180px, 92%);
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .section-title h2 {
+      font-size: 1.5rem;
+      color: var(--verde-escuro);
+      margin-bottom: 8px;
+    }
+
+    .section-title p {
+      color: var(--cinza-texto);
+      font-size: .82rem;
+    }
+
+    /* =========================
+       SOBRE
+    ========================= */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .about-text {
+      padding: 26px;
+      border-radius: 8px;
+      background: white;
+      border: 1px solid #e3e8e5;
+    }
+
+    .about-text h3 {
+      color: var(--verde-escuro);
+      font-size: 1.05rem;
+      margin-bottom: 13px;
+    }
+
+    .about-text p {
+      color: var(--cinza-texto);
+      font-size: .82rem;
+      line-height: 1.7;
+    }
+
+    .about-image {
+      min-height: 190px;
+    }
+
+    /* =========================
+       PROPOSTAS
+    ========================= */
+
+    #propostas {
+      background: var(--verde-claro);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 8px;
+      padding: 23px;
+      min-height: 185px;
+      box-shadow: 0 5px 18px rgba(0,0,0,.04);
+    }
+
+    .card-image {
+      height: 78px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      color: var(--verde-escuro);
+      font-size: .92rem;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: var(--cinza-texto);
+      font-size: .75rem;
+      line-height: 1.55;
+    }
+
+    /* =========================
+       IMPORTÂNCIA
+    ========================= */
+
+    .importance-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .importance-image {
+      min-height: 210px;
+    }
+
+    .importance-text h2 {
+      color: var(--verde-escuro);
+      font-size: 1.45rem;
+      margin-bottom: 13px;
+    }
+
+    .importance-text p {
+      color: var(--cinza-texto);
+      font-size: .82rem;
+      line-height: 1.7;
+    }
+
+    /* =========================
+       RECURSOS
+    ========================= */
+
+    #recursos {
+      background: var(--verde-claro);
+    }
+
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    .resource {
+      height: 110px;
+      background: white;
+      border-radius: 4px;
+      display: grid;
+      place-items: center;
+      color: var(--cinza-texto);
+      font-size: .7rem;
+    }
+
+    /* =========================
+       ALUNOS / METAS
+    ========================= */
+
+    .goals-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 35px;
+      align-items: center;
+    }
+
+    .goal-image {
+      min-height: 180px;
+    }
+
+    .goal-text h2 {
+      color: var(--verde-escuro);
+      margin-bottom: 12px;
+      font-size: 1.35rem;
+    }
+
+    .goal-text p {
+      color: var(--cinza-texto);
+      font-size: .8rem;
+      line-height: 1.65;
+      margin-bottom: 15px;
+    }
+
+    .goal-button {
+      display: inline-block;
+      padding: 9px 17px;
+      background: var(--verde);
+      color: white;
+      border-radius: 6px;
+      font-size: .75rem;
+      font-weight: 600;
+    }
+
+    /* =========================
+       BENEFÍCIOS
+    ========================= */
+
+    #beneficios {
+      background: var(--verde-claro);
+    }
+
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      text-align: center;
+    }
+
+    .benefit-circle {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      background: white;
+      display: grid;
+      place-items: center;
+      color: var(--verde-escuro);
+      font-size: 1.5rem;
+    }
+
+    .benefit h3 {
+      font-size: .85rem;
+      color: var(--verde-escuro);
+      margin-bottom: 5px;
+    }
+
+    .benefit p {
+      font-size: .7rem;
+      color: #42634f;
+    }
+
+    .benefit-actions {
+      text-align: center;
+      margin-top: 28px;
+    }
+
+    /* =========================
+       CONTATO
+    ========================= */
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .contact-image {
+      min-height: 200px;
+    }
+
+    .form {
+      display: grid;
+      gap: 10px;
+    }
+
+    .form input,
+    .form textarea {
+      width: 100%;
+      border: 1px solid #d7ddd9;
+      background: white;
+      border-radius: 5px;
+      padding: 12px;
+      outline: none;
+      font-size: .76rem;
+      color: var(--texto);
+    }
+
+    .form textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form button {
+      border: 0;
+      background: var(--verde);
+      color: white;
+      padding: 11px;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      background: var(--verde-escuro);
+      color: white;
+      min-height: 95px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: .75rem;
+    }
+
+    /* =========================
+       RESPONSIVO
+    ========================= */
+
+    @media (max-width: 850px) {
+      .nav {
+        gap: 12px;
+      }
+
+      .nav a:not(.login) {
+        display: none;
+      }
+
+      .hero-container,
+      .about-grid,
+      .importance-grid,
+      .goals-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 65px 0;
+      }
+
+      .hero-image {
+        width: 180px;
+        height: 180px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .resource-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .benefit-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      section {
+        padding: 45px 0;
+      }
+
+      .header-container {
+        width: 90%;
+      }
+
+      .logo {
+        font-size: 1.1rem;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .resource-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       HEADER / NAVEGAÇÃO
+  ========================== -->
+
+  <header>
+    <div class="header-container">
+
+      <a href="#inicio" class="logo">
+        Nutri<span>Escola</span>
+      </a>
+
+      <nav class="nav">
+        <a href="#inicio" class="active">Início</a>
+        <a href="#sobre">Sobre nós</a>
+        <a href="#propostas">Propostas</a>
+        <a href="#importancia">Importância</a>
+        <a href="#recursos">Recursos</a>
+        <a href="#contato">Contato</a>
+        <a href="D1.html" class="login">Entrar</a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section id="inicio" class="hero">
+
+      <div class="hero-container">
+
+        <div>
+          <h1>
+            Nutri<span>Escola</span>
+          </h1>
+
+          <p>
+            Educação alimentar para uma vida mais saudável.
+            Uma plataforma criada para aproximar estudantes,
+            escola e alimentação equilibrada.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#sobre" class="button primary">
+              Conheça o projeto
+            </a>
+
+            <a href="D1.html" class="button secondary">
+              Entrar
+            </a>
+          </div>
+        </div>
+
+        <!-- Imagem provisória -->
+        <div class="placeholder hero-image">
+          imagem
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         SOBRE NÓS
+    ========================== -->
+
+    <section id="sobre">
+
+      <div class="section-container">
+
+        <div class="section-title">
+          <h2>Sobre nós</h2>
+          <p>Conheça a proposta do NutriEscola</p>
+        </div>
+
+        <div class="about-grid">
+
+          <div class="about-text">
+            <h3>Educação alimentar no ambiente escolar</h3>
+
+            <p>
+              O NutriEscola foi pensado para tornar a educação
+              nutricional mais acessível, simples e próxima dos
+              estudantes. A proposta é incentivar escolhas
+              alimentares melhores e hábitos que possam ser
+              levados para a vida.
+            </p>
+
+            <br>
+
+            <p>
+              A plataforma reúne informações, atividades e
+              recursos educativos relacionados à alimentação,
+              saúde e bem-estar.
+            </p>
+          </div>
+
+          <div class="placeholder about-image">
+            imagem
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         NOSSAS PROPOSTAS
+    ========================== -->
+
+    <section id="propostas">
+
+      <div class="section-container">
+
+        <div class="section-title">
+          <h2>Nossas propostas</h2>
+          <p>Conteúdos pensados para a rotina escolar</p>
+        </div>
+
+        <div class="cards">
+
+          <article class="card">
+            <div class="placeholder card-image">
+              imagem
+            </div>
+
+            <h3>Alimentação equilibrada</h3>
+
+            <p>
+              Aprenda sobre diferentes grupos de alimentos
+              e a importância de manter uma alimentação variada.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="placeholder card-image">
+              imagem
+            </div>
+
+            <h3>Hábitos saudáveis</h3>
+
+            <p>
+              Incentivamos pequenas mudanças na rotina que
+              contribuem para mais saúde e disposição.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="placeholder card-image">
+              imagem
+            </div>
+
+            <h3>Nutrição na escola</h3>
+
+            <p>
+              Informações e atividades para aproximar
+              nutrição, aprendizagem e cotidiano escolar.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         IMPORTÂNCIA
+    ========================== -->
+
+    <section id="importancia">
+
+      <div class="section-container">
+
+        <div class="importance-grid">
+
+          <div class="placeholder importance-image">
+            imagem
+          </div>
+
+          <div class="importance-text">
+
+            <h2>Importância do nosso trabalho</h2>
+
+            <p>
+              A alimentação está diretamente relacionada à
+              disposição, ao desenvolvimento e à qualidade
+              de vida dos estudantes.
+            </p>
+
+            <br>
+
+            <p>
+              Por isso, levar conhecimentos sobre nutrição
+              para dentro da escola pode ajudar os alunos a
+              compreender melhor suas escolhas alimentares
+              e desenvolver hábitos mais conscientes.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         RECURSOS
+    ========================== -->
+
+    <section id="recursos">
+
+      <div class="section-container">
+
+        <div class="section-title">
+          <h2>Nossos recursos</h2>
+          <p>Materiais para aprender de forma simples e visual</p>
+        </div>
+
+        <div class="resource-grid">
+
+          <div class="resource">imagem</div>
+          <div class="resource">imagem</div>
+          <div class="resource">imagem</div>
+          <div class="resource">imagem</div>
+          <div class="resource">imagem</div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         OBJETIVOS
+    ========================== -->
+
+    <section id="objetivos">
+
+      <div class="section-container">
+
+        <div class="goals-grid">
+
+          <div>
+
+            <div class="section-title" style="text-align:left; margin-bottom:18px;">
+              <h2>Metas para uma rotina mais saudável</h2>
+            </div>
+
+            <div class="goal-text">
+
+              <p>
+                O estudante pode conhecer melhor seus hábitos,
+                refletir sobre suas escolhas e descobrir novas
+                maneiras de cuidar da própria alimentação.
+              </p>
+
+              <p>
+                A proposta é transformar informação em atitudes
+                simples que possam fazer parte do cotidiano.
+              </p>
+
+              <a href="D1.html" class="goal-button">
+                Acessar a plataforma
+              </a>
+
+            </div>
+
+          </div>
+
+          <div class="placeholder goal-image">
+            imagem
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         BENEFÍCIOS
+    ========================== -->
+
+    <section id="beneficios">
+
+      <div class="section-container">
+
+        <div class="section-title">
+          <h2>Benefícios para os alunos</h2>
+          <p>Conhecimento que pode acompanhar o estudante dentro e fora da escola</p>
+        </div>
+
+        <div class="benefit-grid">
+
+          <div class="benefit">
+            <div class="benefit-circle">🍎</div>
+            <h3>Mais conhecimento</h3>
+            <p>Informações simples sobre alimentação e nutrição.</p>
+          </div>
+
+          <div class="benefit">
+            <div class="benefit-circle">💚</div>
+            <h3>Mais consciência</h3>
+            <p>Reflexão sobre hábitos e escolhas do dia a dia.</p>
+          </div>
+
+          <div class="benefit">
+            <div class="benefit-circle">🥦</div>
+            <h3>Mais saúde</h3>
+            <p>Incentivo a uma rotina alimentar mais equilibrada.</p>
+          </div>
+
+        </div>
+
+        <div class="benefit-actions">
+          <a href="#contato" class="goal-button">
+            Fale com a equipe
+          </a>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTATO
+    ========================== -->
+
+    <section id="contato">
+
+      <div class="section-container">
+
+        <div class="section-title">
+          <h2>Formulário para contato</h2>
+          <p>Envie uma mensagem para a equipe do NutriEscola</p>
+        </div>
+
+        <div class="contact-grid">
+
+          <div class="placeholder contact-image">
+            imagem
+          </div>
+
+          <form class="form">
+
+            <input
+              type="text"
+              name="nome"
+              placeholder="Nome"
+              required
+            >
+
+            <input
+              type="email"
+              name="email"
+              placeholder="E-mail"
+              required
+            >
+
+            <textarea
+              name="mensagem"
+              placeholder="Escreva sua mensagem"
+              required
+            ></textarea>
+
+            <button type="submit">
+              Enviar mensagem
+            </button>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+    <p>
+      © 2026 NutriEscola — Educação, alimentação e bem-estar.
+    </p>
+  </footer>
+
+</body>
+</html>
